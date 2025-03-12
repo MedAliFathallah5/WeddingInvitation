@@ -177,8 +177,14 @@ figure {
 
 @media screen and (max-width: 768px) {
   .fh5co-cover {
-    heifght: inherit;
+    height: inherit;
     padding: 3em 0;
+    background-position: center center !important; /* Force center positioning */
+    background-attachment: scroll; /* Ensure proper scrolling behavior */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
 }
 
@@ -702,8 +708,10 @@ figure {
 
 #fh5co-started {
   position: relative;
+  width: 100%;
+  height: 100%;
   background-size: cover;
-  background-position: bottom center;
+  background-position: center center;
   background-repeat: no-repeat;
 }
 
@@ -715,6 +723,7 @@ figure {
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
 }
+
 
 #fh5co-started .heading-section {
   margin-bottom: 30px;
