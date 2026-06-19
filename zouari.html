@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="icon.png">
+
+<title>Ons & Mohamed — Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rose-deep:    #b5534c;
+    --rose-mid:     #c9706a;
+    --rose-soft:    #d4958a;
+    --rose-pale:    #f0d5d0;
+    --rose-blush:   #fdf5f4;
+    --rose-cream:   #faf3f0;
+    --green-sage:   #8ba87c;
+    --green-light:  #b8ccaa;
+    --brown-warm:   #7a4a44;
+    --brown-muted:  #9e7470;
+    --text-dark:    #4a2a26;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--rose-cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── Organic blob layer ── */
+  .blob-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .blob-bg svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ── Page layout ── */
+  .page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rose-mid);
+    margin-bottom: 28px;
+  }
+
+  .hero-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(68px, 12vw, 120px);
+    line-height: 0.95;
+    color: var(--rose-deep);
+    letter-spacing: -0.01em;
+  }
+
+  .hero-amp {
+    display: block;
+    font-size: clamp(44px, 7vw, 72px);
+    color: var(--rose-soft);
+    line-height: 1.3;
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--brown-muted);
+    margin-top: 28px;
+    letter-spacing: 0.08em;
+  }
+
+  .scroll-hint {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--rose-soft);
+  }
+
+  .scroll-hint span {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--rose-soft), transparent);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ── Rose cluster SVG in hero ── */
+  .hero-rose {
+    margin-bottom: 36px;
+  }
+
+  /* ── Sections ── */
+  .section {
+    width: 100%;
+    max-width: 700px;
+    padding: 80px 32px;
+    text-align: center;
+    position: relative;
+  }
+
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rose-mid);
+    margin-bottom: 20px;
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(32px, 5vw, 46px);
+    font-weight: 300;
+    color: var(--rose-deep);
+    margin-bottom: 20px;
+  }
+
+  .section-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--brown-warm);
+  }
+
+  /* ── Date card ── */
+  .date-card {
+    background: var(--rose-blush);
+    border: 0.5px solid var(--rose-soft);
+    border-radius: 120px 40px 120px 40px;
+    padding: 52px 60px;
+    margin: 40px auto;
+    max-width: 480px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .date-card::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 0.5px dashed var(--rose-pale);
+    border-radius: 110px 34px 110px 34px;
+    pointer-events: none;
+  }
+
+  .date-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--rose-deep);
+    line-height: 1;
+  }
+
+  .date-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--brown-muted);
+    margin: 10px 0 22px;
+  }
+
+  .date-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 40px;
+    color: var(--brown-warm);
+  }
+
+  /* ── Venue ── */
+  .venue-blob-wrap {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .venue-inner {
+    position: relative;
+    z-index: 2;
+    padding: 52px 48px;
+  }
+
+  .venue-blob-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .venue-name-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 400;
+    color: var(--rose-deep);
+    margin-bottom: 10px;
+  }
+
+  .venue-addr-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--brown-muted);
+  }
+
+  /* ── Petal divider ── */
+  .petal-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .petal-line {
+    flex: 1;
+    height: 0.5px;
+    background: linear-gradient(to right, transparent, var(--rose-soft), transparent);
+    max-width: 160px;
+  }
+
+  /* ── RSVP ── */
+  .rsvp-band {
+    width: 100%;
+    background: var(--rose-deep);
+    padding: 72px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 40px;
+  }
+
+  .rsvp-band::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130%;
+    height: 100px;
+    background: var(--rose-cream);
+    border-radius: 0 0 50% 50%;
+  }
+
+  .rsvp-band::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130%;
+    height: 100px;
+    background: var(--rose-cream);
+    border-radius: 50% 50% 0 0;
+  }
+
+  .rsvp-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .rsvp-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rose-pale);
+    opacity: 0.7;
+    margin-bottom: 12px;
+  }
+
+  .rsvp-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 44px;
+    font-weight: 300;
+    color: var(--rose-blush);
+    margin-bottom: 8px;
+  }
+
+  .rsvp-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--rose-pale);
+    margin-bottom: 32px;
+  }
+
+  .rsvp-btn {
+    display: inline-block;
+    padding: 14px 44px;
+    border: 0.5px solid var(--rose-pale);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--rose-blush);
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    text-decoration: none;
+  }
+
+  .rsvp-btn:hover {
+    background: var(--rose-pale);
+    color: var(--rose-deep);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    padding: 100px 32px 40px;
+    text-align: center;
+  }
+
+  .footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--brown-muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── Floating petals animation ── */
+  .petal {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    animation: float-petal linear infinite;
+  }
+
+  @keyframes float-petal {
+    0%   { transform: translateY(-20px) rotate(0deg);   opacity: 0; }
+    10%  { opacity: 0.45; }
+    90%  { opacity: 0.3; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  @media (max-width: 560px) {
+    .date-card { padding: 40px 28px; border-radius: 80px 28px 80px 28px; }
+    .venue-inner { padding: 40px 28px; }
+    .section { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed organic blob background -->
+<div class="blob-bg">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- Large background blobs -->
+    <path d="M-80 120 C60 -40 280 20 340 180 C400 340 260 440 180 500 C100 560 -60 520 -100 400 C-140 280 -220 280 -80 120Z"
+          fill="#e8c4bc" opacity="0.28"/>
+    <path d="M1200 -60 C1360 60 1520 200 1480 380 C1440 560 1280 600 1160 540 C1040 480 980 340 1020 200 C1060 60 1040 -180 1200 -60Z"
+          fill="#c9706a" opacity="0.12"/>
+    <path d="M600 700 C720 640 880 680 940 780 C1000 880 920 980 800 1000 C680 1020 540 940 500 840 C460 740 480 760 600 700Z"
+          fill="#d4958a" opacity="0.18"/>
+    <path d="M-20 680 C80 620 200 660 240 760 C280 860 200 940 100 960 C0 980 -80 900 -100 800 C-120 700 -120 740 -20 680Z"
+          fill="#b5534c" opacity="0.10"/>
+    <path d="M1100 600 C1200 540 1340 580 1380 700 C1420 820 1340 900 1220 900 C1100 900 1020 820 1040 700 C1060 580 1000 660 1100 600Z"
+          fill="#8ba87c" opacity="0.10"/>
+    <!-- Sage leaf shapes -->
+    <path d="M160 820 C200 780 260 800 280 850 C300 900 260 940 220 930 C180 920 140 880 160 820Z"
+          fill="#8ba87c" opacity="0.15"/>
+    <path d="M1280 100 C1320 60 1380 80 1400 130 C1420 180 1380 220 1340 210 C1300 200 1260 160 1280 100Z"
+          fill="#b8ccaa" opacity="0.18"/>
+  </svg>
+</div>
+
+<!-- Floating petals -->
+<div id="petals-container"></div>
+
+<div class="page">
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+
+    <!-- Hero rose cluster -->
+    <div class="hero-rose">
+      <img src="thumbnail_large.png" height="200px">
+    </div>
+
+    <p class="hero-eyebrow">with joy in their hearts</p>
+
+    <h1 class="hero-names">
+      Ons
+      <span class="hero-amp">&amp;</span>
+      Mohamed
+    </h1>
+
+    <p class="hero-sub">invite you to witness their union</p>
+
+  </section>
+
+  <!-- ── STORY ── -->
+  <section class="section">
+    <p class="section-eyebrow">our story</p>
+    <h2 class="section-heading">Together at last</h2>
+    <p class="section-body">
+      <img src="1.jpg" width="100%" style="border-radius: 110px;">
+    </p>
+
+    <div class="petal-divider" style="margin-top: 48px;">
+      <div class="petal-line"></div>
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M14 4 Q18 10 14 16 Q10 10 14 4Z" fill="#d4958a" opacity="0.8"/>
+        <path d="M4 14 Q10 18 16 14 Q10 10 4 14Z" fill="#d4958a" opacity="0.7"/>
+        <path d="M24 14 Q18 18 12 14 Q18 10 24 14Z" fill="#d4958a" opacity="0.7"/>
+        <path d="M14 24 Q18 18 14 12 Q10 18 14 24Z" fill="#d4958a" opacity="0.8"/>
+        <circle cx="14" cy="14" r="3" fill="#b5534c"/>
+      </svg>
+      <div class="petal-line"></div>
+    </div>
+  </section>
+
+  <!-- ── DATE ── -->
+  <section class="section" style="padding-top: 20px;">
+    <p class="section-eyebrow">the wedding day</p>
+    <h2 class="section-heading">Mark your calendar</h2>
+
+    <div class="date-card">
+      <!-- Decorative rose in corner -->
+      <svg style="position:absolute;top:18px;right:22px;opacity:0.25;" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <path d="M24 8 Q28 16 24 28 Q20 16 24 8Z" fill="#b5534c"/>
+        <path d="M8 24 Q16 28 28 24 Q16 20 8 24Z" fill="#b5534c"/>
+        <path d="M40 24 Q32 28 20 24 Q32 20 40 24Z" fill="#b5534c"/>
+        <circle cx="24" cy="24" r="5" fill="#9a3f3a"/>
+      </svg>
+      <svg style="position:absolute;bottom:14px;left:20px;opacity:0.2;transform:rotate(30deg);" width="36" height="36" viewBox="0 0 48 48" fill="none">
+        <path d="M24 8 Q28 16 24 28 Q20 16 24 8Z" fill="#8ba87c"/>
+        <path d="M8 24 Q16 28 28 24 Q16 20 8 24Z" fill="#8ba87c"/>
+        <circle cx="24" cy="24" r="5" fill="#6a9060"/>
+      </svg>
+
+      <p class="date-label">Saturday</p>
+      <p class="date-big">25</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--rose-mid); letter-spacing:0.1em; margin-top:4px;">July 2026</p>
+      <p class="date-label" style="margin-top:18px; margin-bottom:8px;">ceremony begins at</p>
+      <p class="date-time">20:00</p>
+    </div>
+  </section>
+
+  <!-- ── VENUE ── -->
+  <section class="section" style="padding-top: 20px; padding-bottom: 100px;">
+    <p class="section-eyebrow">where to find us</p>
+    <h2 class="section-heading">Kalaa Kebira</h2>
+
+    <div class="venue-blob-wrap">
+      <!-- Organic blob background for venue card -->
+      <svg class="venue-blob-bg" viewBox="0 0 560 280" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 40 C80 -10 200 10 300 20 C400 30 520 0 540 60 C560 120 520 200 480 240 C440 280 360 290 260 280 C160 270 60 270 20 220 C-20 170 -20 90 30 40Z"
+              fill="#fdf5f4" opacity="0.95"/>
+        <path d="M30 40 C80 -10 200 10 300 20 C400 30 520 0 540 60 C560 120 520 200 480 240 C440 280 360 290 260 280 C160 270 60 270 20 220 C-20 170 -20 90 30 40Z"
+              fill="none" stroke="#d4958a" stroke-width="0.5"/>
+      </svg>
+      <div class="venue-inner">
+        <!-- Leaf motif -->
+        <svg width="50" height="36" viewBox="0 0 50 36" fill="none" style="margin: 0 auto 16px; display:block;">
+          <path d="M8 28 Q0 14 12 4 Q20 14 16 28Z" fill="#8ba87c" opacity="0.7"/>
+          <path d="M42 28 Q50 14 38 4 Q30 14 34 28Z" fill="#8ba87c" opacity="0.7"/>
+          <path d="M25 32 Q23 14 25 6 Q27 14 25 32Z" stroke="#6a9060" stroke-width="0.8" fill="none"/>
+          <path d="M25 20 Q20 16 18 12" stroke="#6a9060" stroke-width="0.6" fill="none"/>
+          <path d="M25 24 Q30 20 32 16" stroke="#6a9060" stroke-width="0.6" fill="none"/>
+        </svg>
+
+        <p class="venue-name-text"><a href="https://maps.app.goo.gl/S9zer5UT4KLJwcri9" style=" color: var(--rose-deep);">Google Maps</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <svg width="60" height="24" viewBox="0 0 60 24" fill="none" style="display:block;margin:0 auto 18px;">
+      <path d="M4 20 Q6 12 14 8 Q18 14 14 20Z" fill="#8ba87c" opacity="0.6"/>
+      <path d="M56 20 Q54 12 46 8 Q42 14 46 20Z" fill="#8ba87c" opacity="0.6"/>
+      <path d="M30 22 Q28 10 30 4 Q32 10 30 22Z" stroke="#6a9060" stroke-width="0.8" fill="none"/>
+      <circle cx="30" cy="4" r="3" fill="#c96460" opacity="0.7"/>
+      <circle cx="18" cy="8" r="2.5" fill="#c96460" opacity="0.5"/>
+      <circle cx="42" cy="8" r="2.5" fill="#c96460" opacity="0.5"/>
+    </svg>
+    <p>Ons &amp; Mohamed · July 2026</p>
+  </footer>
+
+</div>
+
+<script>
+  // Floating petals
+  const container = document.getElementById('petals-container');
+  const petalPaths = [
+    "M0 0 Q4 -8 8 0 Q4 4 0 0Z",
+    "M0 0 Q3 -10 8 -2 Q5 6 0 0Z",
+    "M0 0 Q6 -6 10 2 Q4 6 0 0Z",
+  ];
+  const colors = ['#e8a8a4', '#d4908a', '#f0c0bc', '#e8c4bc'];
+
+  for (let i = 0; i < 18; i++) {
+    const div = document.createElement('div');
+    div.className = 'petal';
+    const size = 12 + Math.random() * 16;
+    const left = Math.random() * 100;
+    const delay = Math.random() * 12;
+    const duration = 10 + Math.random() * 16;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const path = petalPaths[Math.floor(Math.random() * petalPaths.length)];
+
+    div.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 10 10"><path d="${path}" fill="${color}"/></svg>`;
+    div.style.cssText = `
+      left: ${left}%;
+      top: -30px;
+      animation-duration: ${duration}s;
+      animation-delay: ${delay}s;
+    `;
+    container.appendChild(div);
+  }
+
+  // Parallax blobs on scroll
+  const blobBg = document.querySelector('.blob-bg svg');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    blobBg.style.transform = `translateY(${y * 0.08}px)`;
+  }, { passive: true });
+</script>
+</body>
+</html>
